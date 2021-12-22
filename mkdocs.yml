@@ -1,0 +1,54 @@
+---
+# Project Information
+site_name: Cookiecutter Cloud Functions
+site_author: Marco Gancitano
+site_description: >-
+    Cookiecutter to create a production-ready Google Cloud Function.
+    Powered by Poetry, GitHub actions, and MkDocs-Material.
+# Repository information
+repo_name: askarthur/cookiecutter-cloudfunctions
+repo_url: https://github.com/askarthur/cookiecutter-cloudfunctions
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2021 Arthur ArtData LLC
+
+# Configuration
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tabs
+  language: en
+
+# Footer
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/askarthur
+      name: AskArthur on GitHub
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/askarthur_art/
+      name: AskArthur on Instagram
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/AskArthur_art
+      name: AskArthur on Twitter
+
+# Page tree
+nav:
+  - Home:
+    - Introduction: index.md
+  - Getting started:
+    - Create local project: getting-started/create_local_project.md
+    - Connect to remote repository: getting-started/connect_to_remote_repo.md
+    - Configure GitHub repository: getting-started/configure_github_repo.md
+    - Deploy to GCP: getting-started/deploy_to_gcp.md
+  - Triggers:
+    - HTTP: triggers/http.md
+    - Pub/Sub: triggers/pub_sub.md
+    - Cloud Storage: triggers/cloud_storage.md
+    - Cloud Firestore: triggers/cloud_firestore.md
+  - Advanced:
+    - Feature explanation: advanced/feature_explanation.md

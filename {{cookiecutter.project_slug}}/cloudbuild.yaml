@@ -1,0 +1,24 @@
+steps:
+  - name: python:3.8
+    id: "create_requirements"
+    args:
+      - "sh"
+      - "-c"
+      - |
+        pip install poetry && poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: "deploy_functions"
+    args:
+      - functions
+      - deploy
+      - {{ cookiecutter.project_slug }}
+      - --source=.
+      - --entry-point=run_pipeline
+      - --runtime=python38
+      {% if cookiecutter.trigger_type == 'HTTP' -%}- --trigger-http{% endif -%}
+      {% if cookiecutter.trigger_type == 'Cloud Pub/Sub' -%}- --trigger-topic={{ cookiecutter.project_slug }}{% endif -%}
+      {% if (cookiecutter.trigger_type == 'Cloud Storage') or (cookiecutter.trigger_type == 'Cloud Firestore') -%}
+      - --trigger-resource=YOUR_TRIGGER_RESOURCE
+      - --trigger-event=YOUR_TRIGGER_EVENT
+      {% endif -%}
